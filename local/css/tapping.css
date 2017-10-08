@@ -1,0 +1,45 @@
+@-webkit-keyframes typing { from { width: 0; } }
+@-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
+
+#first-line{
+    font: bold 5em monospace;
+    border-right: .1em solid black;
+    width: 21ch;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-animation: typing 6s steps(21, end),
+    blink-caret .5s step-end infinite alternate;
+    color: #0c7133;
+    top:2%;
+    left:25%;
+    position:absolute;
+}
+
+#second-line{
+    font: bold 5em monospace;
+    border-right: .1em solid black;
+    width: 50ch;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-animation: typing 10s steps(50, end),
+    blink-caret .5s step-end infinite alternate;
+    color: #712131;
+    top:8%;
+    left:25%;
+    position:absolute;
+}
+
+#third-line{
+    font: bold 5em monospace;
+    border-right: .1em solid black;
+    width: 61ch;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-animation: typing 10s steps(61, end),
+    blink-caret .5s step-end infinite alternate;
+    color: #4238a1;
+    top:14%;
+    left:25%;
+    position:absolute;
+}
+

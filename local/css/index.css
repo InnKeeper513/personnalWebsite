@@ -1,0 +1,103 @@
+body, html {
+    height: 100%;
+}
+
+.hello2{
+    font-size:80px;
+    color:white;
+    position: fixed;
+    top: 22%;
+    right:6%;
+    -webkit-animation-name: appearing; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name:appearing;
+    z-index:1;
+}
+.hello1{
+    font-size:50px;
+    color:white;
+    position:fixed;
+    top:17%;
+    right:17%;
+    -webkit-animation-name: appearing; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 5s; /* Safari 4.0 - 8.0 */
+    animation-name:appearing;
+    z-index:1;
+}
+.hello3{
+    font-size:30px;
+    color:white;
+    position:fixed;
+    top:40%;
+    left:65%;
+    -webkit-animation-name: appearing; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 7s; /* Safari 4.0 - 8.0 */
+    animation-name:appearing;
+    z-index:1;
+}
+.hello4{
+    font-size:20px;
+    color:white;
+    position:fixed;
+    top:48%;
+    right: 10%;
+    -webkit-animation-name: appearing; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-name:appearing;
+    z-index:1;
+}
+
+
+.headerbar1{
+    height:80px;
+    top:0px;
+    background-color:black;
+    position:sticky;
+    z-index:2;
+}
+.headerbar2{
+    height:80px;
+    background-color: #79daff;
+    position:sticky;
+    z-index:4;
+}
+.bg {
+    /* The image used */
+    background-image: url("../resource/background image.png");
+    z-index:-1;
+
+    /* Full height */
+    height: 100%;
+    position:relative;
+    left:0px;
+    top:0px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed
+}
+
+.computer_bg {
+    /* The image used */
+    background-image: url("../resource/computer.png");
+    z-index:-1;
+    position:relative;
+
+    /* Full height */
+    height: 100%;
+    left:0px;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed
+
+}
+
+@keyframes appearing{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
