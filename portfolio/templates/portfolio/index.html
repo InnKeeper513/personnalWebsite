@@ -1,96 +1,41 @@
+{% extends 'portfolio/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Ruijie Tang's Portfolio Website</title>
-    <link rel="stylesheet" href="{% static 'portfolio/css/index.css'%}" type="text/css">
-    <link rel="stylesheet" href="{% static 'portfolio/css/tapping.css'%}" type="text/css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-</head>
-<body>
 
-    <nav class="headerbar1"></nav>
-    <div class="bg"></div>
+{% block styles %}
+<link rel="stylesheet" href="{% static 'portfolio/css/index.css' %}">
+{% endblock %}
 
+{% block body %}
+<div id="header">
+  <div class="img-container">
+    <img src="{% static 'portfolio/resource/background_image.png' %}">
+  </div>
+  <div class="container">
+    <p hidden>Hello, I'm Jerry.</p>
+    <p hidden>Welcome to my portfolio website!</p>
+    <p hidden>I'm a computer student at the University of Waterloo.</p>
+    <p hidden>By the way, I created these pictures with Adobe Illustrator.</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="img-container">
+    <img src="{% static 'portfolio/resource/computer.png' %}">
+  </div>
+  <div class="container-fluid">
     <p class="hello1">
-        Hello, I'm Jerry.
+        \\ I am a Programmer;
     </p>
     <p class="hello2">
-        Welcome to my portfolio website!
-    </p>
-    <p class="hello3">
-        I'm a computer student at the University of Waterloo.
+        ## I love to learn new languages and technologies;
     </p>
     <p class="hello4">
-        By the way, I created these pictures with Adobe Illustrator.
+        'Hit the button below to see my future plans;
     </p>
-    <nav class="headerbar2"></nav>
+  </div>
+<div>
+{% endblock %}
 
-    <div class="computer_bg">
-    </div>
-    <script type="text/javascript">
-        var element1 = document.createElement("p");
-        var text1 = document.createTextNode("\\\\ I am a Programmer;");
-        var id1 = "first-line";
-        element1.appendChild(text1);
-        element1.setAttribute("id", id1);
-
-        var element2 = document.createElement("p");
-        var text2 = document.createTextNode("## I love to learn new languages and technologies;");
-        var id2 = "second-line";
-        element2.appendChild(text2);
-        element2.setAttribute("id", id2);
-
-        var element3 = document.createElement("p");
-        var text3 = document.createTextNode("'Hit the button below to see my future plans;1");
-        var id3 = "third-line";
-        element3.appendChild(text3);
-        element3.setAttribute("id", id3);
-        $(document).scroll(function() {
-            if ($(window).scrollTop() > 300 && !document.getElementById(id1)) {
-                document.querySelector(".computer_bg").appendChild(element1);
-            }
-            if(document.getElementById(id1) && !document.getElementById(id2)){
-                document.querySelector(".computer_bg").appendChild(element2);
-            }
-            if(document.getElementById(id2) && !document.getElementById(id3)){
-                document.querySelector(".computer_bg").appendChild(element3);
-            }
-        });
-    </script>
-    <script>
-        var $logos = $('.hello1');
-        $(document).scroll(function() {
-            if($(window).scrollTop() > 100){
-                $(".hello1").fadeOut("slow");
-            } else
-                $(".hello1").fadeIn("slow");
-        });
-        var $logos2 = $('.hello2');
-        $(document).scroll(function() {
-            if($(window).scrollTop() > 300){
-                $(".hello2").fadeOut("slow");
-            } else
-                $(".hello2").fadeIn("slow");
-        });
-        var $logos3 = $('.hello3');
-        $(document).scroll(function() {
-            if($(window).scrollTop() > 500){
-                $(".hello3").fadeOut("slow");
-            } else
-                $(".hello3").fadeIn("slow");
-        });
-        var $logos4 = $('.hello4');
-        $(document).scroll(function() {
-            if($(window).scrollTop() > 600){
-                $(".hello4").fadeOut("slow");
-            } else
-                $(".hello4").fadeIn("slow");
-        });
-    </script>
-    <div class="bg"></div>
-
-
-</body>
-</html>
+{% block scripts %}
+<script src="{% static 'portfolio/js/index.js' %}"></script>
+{% endblock %}
