@@ -3,6 +3,7 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'portfolio/css/index.css' %}">
+<link rel="stylesheet" href="{% static 'portfolio/css/slider.css' %}">
 {% endblock %}
 
 {% block body %}
@@ -20,21 +21,23 @@
 
 <div class="content">
   <div class="img-container">
-    <img src="{% static 'portfolio/resource/computer.png' %}">
+    <img class="slide" src="{% static 'portfolio/resource/computer.png' %}">
+    <img class="slide" src="{% static 'portfolio/resource/computer_night.png' %}">
   </div>
   <div class="container-fluid">
-
-    <p class="hello1">
-        \\ I am a Programmer;
-    </p>
-    <p class="hello2">
-        ## I love to learn new languages and technologies;
-    </p>
-    <p class="hello4">
-        'Hit the button below to see my future plans;
-    </p>
+      <p class="hello1">
+          \\ I am a Programmer;
+      </p>
+      <p class="hello2">
+          ## I love to learn new languages and technologies;
+      </p>
+      <p class="hello4">
+          'Hit the button below to see my future plans;
+      </p>
   </div>
 </div>
+
+
 
   <div class="content2">
     <div class="img-container">
@@ -51,5 +54,6 @@
 {% endblock %}
 
 {% block scripts %}
+<script src="{% static 'portfolio/js/slider.js' %}"></script>
 <script src="{% static 'portfolio/js/index.js' %}"></script>
 {% endblock %}
