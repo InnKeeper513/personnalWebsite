@@ -19,40 +19,20 @@
 </div>
 
 <div class="content">
-    <video autoplay="true" loop>
-      <source src="{% static  'portfolio/video/animation.mp4'%}">
-    </video>
-    <!--
+    <div class="video">
+      <video autoplay="true" loop>
+        <source src="{% static  'portfolio/video/animation.mp4'%}">
+      </video>
+    </div>
     <div class="container-fluid">
-        <p class="inline">
-            \\ I am a Programmer;
-        </p>
-        <p class="inline">
-            ## I love to learn new languages and technologies;
-        </p>
-        <p class="inline">
-            'It is a pleasure to design and to solve problems;
-        </p>
-        <p class="inline">
-            \\ I develop software, algorithms and websites;
-        </p>
-        <p class="inline">
-            ## I mainly program in Java, C++ and python;
-        </p>
-        <p class="inline">
-            'I'm still learning to become a better programmer;
-        </p>
-        <p class="inline">
-            \\ I enjoy reading books and watching movies;
-        </p>
-        <p class="inline">
-            ## I aim to read 1 book every 2 days;
-        </p>
-        <p class="inline">
-            'Knowledge from books help me to better understand this world;
+        <p>
+          This is how my day looks like.<br>
+          Learning new stuffs and technologies.
         </p>
     </div>
-    -->
+    <div class="button">
+      <a href="{% url 'portfolio:about' %}">About Me</a>
+    </div>
 </div>
 
   <div class="content2">
