@@ -99,7 +99,7 @@
 #header .container p:nth-child(1){
     font-size:4vw;
     position: relative;
-    right: 10vw;
+    right: 3vw;
 }
 #header .container p:nth-child(2){
     font-size:2.3vw;
@@ -109,7 +109,7 @@
 #header .container p:nth-child(3){
     font-size:2vw;
     position: relative;
-    right: 6vw;
+    right:  3vw;
 }
 #header .container p:nth-child(4){
     font-size:1vw;
