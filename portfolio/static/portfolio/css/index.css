@@ -1,9 +1,9 @@
 #header, .content, .content2, .content3{
     width:100vw;
-    height:100vh;
+    height:90vh;
 }
 
-#header .img-container, .content3 .img-container{
+#header .img-container{
     width:100vw;
     height:100vh;
     position: absolute;
@@ -12,10 +12,6 @@
     align-items: center;
     z-index: -1;
     overflow: hidden;
-}
-
-.content .above_container{
-  color: white;
 }
 
 #header .img-container{
@@ -42,8 +38,6 @@
   max-height:50vh;
   min-width:30vh;
   min-height: 30vw;
-  width: 80%;
-  height: 80%;
   position: relative;
   float:right;
 }
@@ -52,51 +46,70 @@
   border-style: solid;
   border-width: 5px;
   width: 100%;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  overflow:hidden;
+}
+
+.content .button{
+  position: relative;
+  left: 20%;
 }
 
 .button a{
-  position: relative;
-  float: right;
-  right:20%;
-  top: 20%;
-  font-size: 40px;
+  font-size: 3em;
   font-family: 'Bungee', cursive;
   color: #f5f5f5;
   border-style: solid #f5f5f5;
-  padding: 4px 4px 4px 4px;
   border-color: black;
   border-width: 8px;
+  width: 100%;
   text-decoration: underline;
   -webkit-transition: color 0.3s ease-out, background-color 0.3s ease-out;
   transition: color 0.3s ease-out, background-color 0.3s ease-out;
 }
 
-.content .button a:hover{
+.content .button a:hover, .content2 .button a:hover, .content3 .button a:hover{
   color: #000;
   background-color: #f5f5f5;
   -webkit-transition: color 0.3s ease-in, background-color 0.3s ease-in;
   transition: color 0.3s ease-in, background-color 0.3s ease-in;
 }
-
-.content .video{
+.content video{
+  max-width: 50%;
+  height: auto;
+  float: left;
   position: relative;
+}
+
+.content .video video{
   left:2%;
   border-style: solid;
+  width: 100%;
   border-width: 5px;
-  float:left;
+
 }
 
 .container-fluid{
   position: relative;
-  padding-top:2%;
-  padding-left:7%;
+  max-width: 100%;
+  height: 25%;
+
+}
+.content .container-fluid{
+  padding-left: 60%;
+  padding-top: 6%;
+}
+.content2 .container-fluid{
+  padding-top: 6%;
+  padding-left: 10%;
   float:left;
+
 }
 
+.content2 .button{
+  position: absolute;
+  left: 20%;
+  padding-top: 10%;
+
+}
 .container-fluid p{
   font-size: 2em;
   color: white;
@@ -111,24 +124,47 @@
 }
 
 #header .container{
-  padding-top: 10vh;
+  padding-top: 30vh;
 }
 
 #header .container p:nth-child(1){
-    font-size:4vw;
+    font-size:4em;
     position: relative;
     right: 3vw;
 }
 #header .container p:nth-child(2){
-    font-size:2.3vw;
+    font-size:2em;
     position: relative;
     right: 1vw;
 }
 #header .container p:nth-child(3){
-    font-size:2vw;
+    font-size:2em;
     position: relative;
     right:  3vw;
 }
 #header .container p:nth-child(4){
-    font-size:1vw;
+    font-size:1em;
+}
+
+.content3{
+  margin-left: 5%;
+}
+.content3 .img-container{
+  height: 80%;
+  width: 45%;
+  position: relative;
+  float: left;
+}
+.content3 .button{
+  position: relative;
+  right:25%;
+  top:20%;
+  float: right;
+}
+
+.content3 .img-container img{
+  height:100%;
+  width: auto;
+  border: 5px;
+  border-style: solid;
 }
