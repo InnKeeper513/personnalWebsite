@@ -17,7 +17,7 @@ from django.conf.urls import url,include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'', include('portfolio.urls', namespace='portfolio')),
+    url(r'', include('portfolio.urls',namespace="portfolio")),
     url(r'^admin/', admin.site.urls),
-    url('localjava/',include('locajava.urls',namespace='localjava')),
+
 ]

@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruijie Tang's Portfolio Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    {% block styles %}
+    {% endblock %}
+</head>
+<body>
+
+
+      <nav class="navbar navbar-default navbar-fixed-top navbar-light bg-faded navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">WebSiteName</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="{% url 'portfolio:index' %}">Home</a></li>
+        <li><a href="{% url 'portfolio:about' %}">About Me</a></li>
+        <li><a href="{% url 'portfolio:project' %}">Projects</a></li>
+        <li><a href="{% url 'portfolio:contact' %}">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+{% block body %}
+{% endblock %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+{% block scripts %}
+{% endblock %}
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<footer>
+<div class="footer" id="footer">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6  col-md-6 col-sm-5 col-xs-6">
+            <h3>Education</h3>
+            <ul>
+                <li> <i class=" fa fa-university">   </i>University of Waterloo </li>
+                <li> <i class="fa fa-graduation-cap"></i> Computer Science and Physics </a> </li>
+            </ul>
+        </div>
+
+        <div class="col-lg-6  col-md-6 col-sm-6 col-xs-6">
+            <h3>Contact Me</h3>
+            <ul>
+                <li> If you want to know more about me. please feel free to contact me! </li>
+                <li>  </li>
+                <li><a href="mailto:jerrytang513@hotmail.com"> jerrytang513@hotmail.com </a> </li>
+            </ul>
+            <ul class="social">
+                <li> <a href="https://www.facebook.com/jerry.tang.73"> <i class=" fa fa-facebook">   </i> </a> </li>
+                <li> <a href="mailto:jerrytang513a@gmail.com"> <i class="fa fa-google-plus">   </i> </a> </li>
+                <li> <a href="https://github.com/InnKeeper513"> <i class="fa fa-github">   </i> </a> </li>
+                <li> <a href="https://www.linkedin.com/in/ruijie-tang-944166133/"> <i class="fa fa-linkedin">   </i> </a> </li>
+            </ul>
+        </div>
+    </div>
+    <!--/.row-->
+</div>
+<!--/.container-->
+</div>
+<!--/.footer-->
+
+<div class="footer-bottom">
+<div class="container">
+    <p class="pull-left"> Jerry Tang @ 2017 </p>
+</div>
+</div>
+<!--/.footer-bottom-->
+</footer>
+<script>
+  document.body.style.zoom="100%"
+</script>
+
+</body>
+</html>
