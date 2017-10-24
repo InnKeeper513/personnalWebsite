@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,19 +10,16 @@
     <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'portfolio/css/style.css'%}">
     <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     {% block styles %}
     {% endblock %}
 </head>
 <body>
 
-
-      <nav class="navbar navbar-default navbar-fixed-top navbar-light bg-faded navbar-inverse">
+  <nav class="navbar navbar-default navbar-fixed-top navbar-light bg-faded navbar-inverse">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">WebSiteName</a>
-      </div>
+      
       <ul class="nav navbar-nav">
+        <a class="navbar-brand" href="#"><img src="{% static 'portfolio/resource/myLogo.png' %}"></a>
         <li><a href="{% url 'portfolio:index' %}">Home</a></li>
         <li><a href="{% url 'portfolio:about' %}">About Me</a></li>
         <li><a href="{% url 'portfolio:project' %}">Projects</a></li>

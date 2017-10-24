@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'portfolio/css/tree.css'%}">
+
 <link rel="stylesheet" href="{% static 'portfolio/css/about.css'%}">
 {% endblock %}
 
@@ -99,8 +101,73 @@
 	<div class="skill-bar-percent">70%</div>
 </div>
 
+<section id="timeline">
+
+  <div class="timeline">
+      <canvas id="cvs3"></canvas>
+      <article>
+          <h2>Education & Work</h2>
+          <figure>
+              <figcaption>Zayo Group</figcaption>
+              <h6>2017 Sept - NOW</h6>
+              <p>
+                Backend Developer as a coop student.<br> Language : Java, VBS, SQL, JSP <br> Technologies : Tomcat, Spring, Salesforce
+              </p>
+          </figure>
+          <figure>
+              <figcaption>CS and Physics</figcaption>
+              <h6>2017 April - Now</h6>
+              <p>
+                  2nd Year Computer Science Program major with Physics at the University of Waterloo.
+              </p>
+          </figure>
+          <figure>
+              <figcaption>Mathematical Physics</figcaption>
+              <h6>2016 Sept - 2017 April</h6>
+              <p>
+                  1st Year Mathematical Physics Program at the University of Waterloo.
+              </p>
+          </figure>
+          <figure>
+              <figcaption>High School</figcaption>
+              <h6>2012 Sept - 2016 June</h6>
+              <p>
+                 Graduated from Bur Oak Secondary School.
+              </p>
+          </figure>
+      </article>
+
+      <article>
+          <h2>Learning Path</h2>
+          <figure>
+              <figcaption>Physics Learning</figcaption>
+              <h6>2019 - 2020</h6>
+              <p>
+                Study Physics, Calculus. Learn Calculus 4, Quantum Physics, Astronomy Physics, General Relativities.
+              </p>
+          </figure>
+          <figure>
+              <figcaption>Machine Learning</figcaption>
+              <h6>2018 - 2019</h6>
+              <p>
+                Learn algorithms, math and theories behind Machine Learning. Learn TensorFlow, Python Machine Learning, Linear Algebra.
+              </p>
+          </figure>
+          <figure>
+              <figcaption>Web Developer</figcaption>
+              <h6>2017 - 2018</h6>
+              <p>
+                Learn 2 Web Development Frameworks. Spring and Django. Read books to learn more about Javascript, Python, J2EE, Tomcat.
+              </p>
+          </figure>
+      </article>
+      <br style="clear:both" />
+  </div>
+
+</section>
 {% endblock %}
 
 {% block scripts %}
+<script src="{% static 'portfolio/js/tree.js' %}"></script>
 <script src="{% static 'portfolio/js/about.js' %}"></script>
 {% endblock %}

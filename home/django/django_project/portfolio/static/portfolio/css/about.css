@@ -1,0 +1,76 @@
+
+body {
+
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif; text-align:center; margin:auto; background:url(../background2.png)}
+
+.img-container{
+		padding-top:10%;
+}
+
+.img-container p{
+	padding-top:7%;
+}
+p{  color:#525252;
+	 font-size:20px;
+	 font-family: 'Bungee', cursive;
+ }
+
+.skillbar {
+	position:relative;
+	padding: 10px;
+	display:block;
+	margin-bottom:15px;
+	width:70%;
+	background:#eee;
+	height:35px;
+	border-radius:3px;
+	transition:0.1s linear;
+	transition-property:width, background-color;
+  margin: auto;
+}
+
+.skillbar-title {
+	position:absolute;
+	top:0;
+	left:0;
+	width:110px;
+	font-weight:bold;
+	font-size:13px;
+	color:#ffffff;
+	background:#6adcfa;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+.skillbar-title span {
+	display:block;
+	background:rgba(0, 0, 0, 0.1);
+	padding:0 20px;
+	height:35px;
+	line-height:35px;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+.skillbar-bar {
+	height:35px;
+	width:0px;
+	background:#6adcfa;
+	border-radius:3px;
+}
+.skill-bar-percent {
+	position:absolute;
+	right:10px;
+	top:0;
+	font-size:11px;
+	height:35px;
+	line-height:35px;
+	color:#ffffff;
+	color:rgba(0, 0, 0, 0.4);
+}
+h1 {
+	 font-family: 'Bungee', cursive;
+	text-align: center;
+	font-size:50px;
+	margin-top:60px;
+	color:black;
+	margin-bottom: 30px;
+}

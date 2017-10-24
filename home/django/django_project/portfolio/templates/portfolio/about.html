@@ -2,10 +2,172 @@
 {% load static %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'portfolio/css/tree.css'%}">
+
+<link rel="stylesheet" href="{% static 'portfolio/css/about.css'%}">
 {% endblock %}
 
 {% block body %}
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+	<div class="img-container">
+		<img src="{% static 'portfolio/resource/myLogo.png' %}">
+		<p>I'm a Programmer, a designer, a digital artist and potentially a future physicist.<br>
+			I love to learn new technologies and to see how things work. I also believe that,<br>
+			any challenges can be accomplished by a piece of paper and a cup of coffee :L
+		 </p>
+	</div>
+
+<h1>Computer Science Skills Bar</h1>
+
+<div class="skillbar clearfix " data-percent="60%">
+	<div class="skillbar-title" style="background: #d35400;"><span>C++</span></div>
+	<div class="skillbar-bar" style="background: #e67e22;"></div>
+	<div class="skill-bar-percent">60%</div>
+</div>
+
+<div class="skillbar clearfix " data-percent="40%">
+	<div class="skillbar-title" style="background: #2980b9;"><span>C</span></div>
+	<div class="skillbar-bar" style="background: #3498db;"></div>
+	<div class="skill-bar-percent">40%</div>
+</div>
+
+<div class="skillbar clearfix " data-percent="70%">
+	<div class="skillbar-title" style="background: #2c3e50;"><span>Java</span></div>
+	<div class="skillbar-bar" style="background: #2c3e50;"></div>
+	<div class="skill-bar-percent">70%</div>
+</div>
+
+<div class="skillbar clearfix " data-percent="50%">
+	<div class="skillbar-title" style="background: #46465e;"><span>Python</span></div>
+	<div class="skillbar-bar" style="background: #5a68a5;"></div>
+	<div class="skill-bar-percent">50%</div>
+</div>
+
+<div class="skillbar clearfix " data-percent="55%">
+	<div class="skillbar-title" style="background: #333333;"><span>HTML5</span></div>
+	<div class="skillbar-bar" style="background: #525252;"></div>
+	<div class="skill-bar-percent">55%</div>
+</div>
+
+<div class="skillbar clearfix " data-percent="30%">
+	<div class="skillbar-title" style="background: #27ae60;"><span>CSS3</span></div>
+	<div class="skillbar-bar" style="background: #2ecc71;"></div>
+	<div class="skill-bar-percent">30%</div>
+</div>
+
+<div class="skillbar clearfix " data-percent="40%">
+	<div class="skillbar-title" style="background: #124e8c;"><span>JavaScript</span></div>
+	<div class="skillbar-bar" style="background: #4288d0;"></div>
+	<div class="skill-bar-percent">40%</div>
+</div>
+<div class="skillbar clearfix " data-percent="60%">
+	<div class="skillbar-title" style="background: #d35400;"><span>Latex</span></div>
+	<div class="skillbar-bar" style="background: #e67e22;"></div>
+	<div class="skill-bar-percent">60%</div>
+</div>
+<div class="skillbar clearfix " data-percent="80%">
+	<div class="skillbar-title" style="background: #2980b9;"><span>VB Script</span></div>
+	<div class="skillbar-bar" style="background: #3498db;"></div>
+	<div class="skill-bar-percent">80%</div>
+</div>
+<div class="skillbar clearfix " data-percent="80%">
+	<div class="skillbar-title" style="background:  #2c3e50;"><span>Django</span></div>
+	<div class="skillbar-bar" style="background: #2c3e50;"></div>
+	<div class="skill-bar-percent">80%</div>
+</div>
+<div class="skillbar clearfix " data-percent="40%">
+	<div class="skillbar-title" style="background: #27ae60;"><span>Tomcat</span></div>
+	<div class="skillbar-bar" style="background: #2ecc71;"></div>
+	<div class="skill-bar-percent">40%</div>
+</div>
+<div class="skillbar clearfix " data-percent="40%">
+	<div class="skillbar-title" style="background: #2980b9;"><span>SQL</span></div>
+	<div class="skillbar-bar" style="background: #4288d0;"></div>
+	<div class="skill-bar-percent">40%</div>
+</div>
+<div class="skillbar clearfix " data-percent="30%">
+	<div class="skillbar-title" style="background: #124e8c;"><span>AE</span></div>
+	<div class="skillbar-bar" style="background: #5a68a5;"></div>
+	<div class="skill-bar-percent">30%</div>
+</div>
+<div class="skillbar clearfix " data-percent="70%">
+	<div class="skillbar-title" style="background: #d35400;"><span>Illustrator</span></div>
+	<div class="skillbar-bar" style="background: #e67e22;"></div>
+	<div class="skill-bar-percent">70%</div>
+</div>
+
+<section id="timeline">
+
+  <div class="timeline">
+      <canvas id="cvs3"></canvas>
+      <article>
+          <h2>Education & Work</h2>
+          <figure>
+              <figcaption>Zayo Group</figcaption>
+              <h6>2017 Sept - NOW</h6>
+              <p>
+                Backend Developer as a coop student.<br> Language : Java, VBS, SQL, JSP <br> Technologies : Tomcat, Spring, Salesforce
+              </p>
+          </figure>
+          <figure>
+              <figcaption>CS and Physics</figcaption>
+              <h6>2017 April - Now</h6>
+              <p>
+                  2nd Year Computer Science Program major with Physics at the University of Waterloo.
+              </p>
+          </figure>
+          <figure>
+              <figcaption>Mathematical Physics</figcaption>
+              <h6>2016 Sept - 2017 April</h6>
+              <p>
+                  1st Year Mathematical Physics Program at the University of Waterloo.
+              </p>
+          </figure>
+          <figure>
+              <figcaption>High School</figcaption>
+              <h6>2012 Sept - 2016 June</h6>
+              <p>
+                 Graduated from Bur Oak Secondary School.
+              </p>
+          </figure>
+      </article>
+
+      <article>
+          <h2>Learning Path</h2>
+          <figure>
+              <figcaption>Physics Learning</figcaption>
+              <h6>2019 - 2020</h6>
+              <p>
+                Study Physics, Calculus. Learn Calculus 4, Quantum Physics, Astronomy Physics, General Relativities.
+              </p>
+          </figure>
+          <figure>
+              <figcaption>Machine Learning</figcaption>
+              <h6>2018 - 2019</h6>
+              <p>
+                Learn algorithms, math and theories behind Machine Learning. Learn TensorFlow, Python Machine Learning, Linear Algebra.
+              </p>
+          </figure>
+          <figure>
+              <figcaption>Web Developer</figcaption>
+              <h6>2017 - 2018</h6>
+              <p>
+                Learn 2 Web Development Frameworks. Spring and Django. Read books to learn more about Javascript, Python, J2EE, Tomcat.
+              </p>
+          </figure>
+      </article>
+      <br style="clear:both" />
+  </div>
+
+</section>
 {% endblock %}
 
 {% block scripts %}
+<script src="{% static 'portfolio/js/tree.js' %}"></script>
+<script src="{% static 'portfolio/js/about.js' %}"></script>
 {% endblock %}
