@@ -19,5 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'', include('portfolio.urls',namespace="portfolio")),
     url(r'^admin/', admin.site.urls),
-
+    url(r'^localjava/',include('localjava.urls',namespace='localjava')),
 ]

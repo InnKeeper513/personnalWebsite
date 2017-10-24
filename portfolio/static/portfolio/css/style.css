@@ -5,6 +5,13 @@ body, html {
     font-family: 'Signika', sans-serif;
 }
 
+nav img{
+    top:0px;
+    left: 0px;
+    width: 30px;
+    height: 30px;
+}
+
 .full {
     width: 100%;
 }
