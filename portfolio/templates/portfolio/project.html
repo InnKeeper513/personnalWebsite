@@ -46,11 +46,13 @@
 
 <!---->
 <div class="project-container">
+
+{% for key, value in project_strings.items %}
 <article class="entry">
   <a>
     <aside>
-      <strong>portfolio Website</strong>
-      <p>Django, Python, HTML5, CSS3, javascript</p>
+      <strong>{{key}}</strong>
+        <p>{{ value }}</p>
     </aside>
     <img src=""/>
 
@@ -60,7 +62,8 @@
     <li style="background-color:#246f41"></li><li style="background-color:#f57b20"></li><li style="background-color:#433e42"></li>
   </ul>
 </article>
-
+{% endfor %}
+<!--
 <article class="entry">
   <a>
     <aside>
@@ -158,7 +161,7 @@
     <li style="background-color:#2b8dbd"></li><li style="background-color:#264c5f"></li><li style="background-color:#f36000"></li>
   </ul>
 </article>
-
+-->
 <!--
 <article class="entry">
   <a>
