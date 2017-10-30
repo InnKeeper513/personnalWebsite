@@ -38,7 +38,7 @@ class Language(models.Model):
         return self.project_name
 
 class Projects(models.Model):
-    project_id = models.AutoField(primary_key=True)
+
     project_name = models.CharField(max_length=50,unique=True)
     project_progress = models.IntegerField(blank = True)
     project_description = models.CharField(max_length=300)
