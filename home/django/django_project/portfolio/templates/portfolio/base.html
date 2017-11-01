@@ -17,9 +17,10 @@
 
   <nav class="navbar navbar-default navbar-fixed-top navbar-light bg-faded navbar-inverse">
     <div class="container-fluid">
-      
-      <ul class="nav navbar-nav">
+      <div class="navbar-header">
         <a class="navbar-brand" href="#"><img src="{% static 'portfolio/resource/myLogo.png' %}"></a>
+      </div>
+      <ul class="nav navbar-nav">
         <li><a href="{% url 'portfolio:index' %}">Home</a></li>
         <li><a href="{% url 'portfolio:about' %}">About Me</a></li>
         <li><a href="{% url 'portfolio:project' %}">Projects</a></li>
@@ -69,11 +70,6 @@
 </div>
 <!--/.footer-->
 
-<div class="footer-bottom">
-<div class="container">
-    <p class="pull-left"> Jerry Tang @ 2017 </p>
-</div>
-</div>
 <!--/.footer-bottom-->
 </footer>
 <script>

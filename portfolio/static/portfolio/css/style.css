@@ -17,6 +17,7 @@ nav img{
 }
 
 .footer {
+
 	background: black;
 	height: auto;
 	padding-bottom: 30px;
@@ -24,6 +25,8 @@ nav img{
 	width: 100%;
 	border-bottom: 1px solid #CCCCCC;
 	border-top: 1px solid #DDDDDD;
+  overflow: hidden;
+  clear:both;
 }
 .footer p {
 	margin: 0;
@@ -132,8 +135,9 @@ nav img{
 }
 .footer-bottom {
 	border-top: 1px solid #white;
-	padding-top: 10px;
-	padding-bottom: 10px;
+  bottom:0px;
+  clear:both;
+  overflow: hidden;
 }
 .footer-bottom p.pull-left {
 	padding-top: 3px;

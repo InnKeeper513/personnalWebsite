@@ -51,3 +51,11 @@ class Projects(models.Model):
 
     def __str__(self):
         return self.project_name
+
+class Contact_Info(models.Model):
+    email = models.CharField(max_length=30,primary_key=True)
+    name = models.CharField(max_length=30)
+    text = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.email

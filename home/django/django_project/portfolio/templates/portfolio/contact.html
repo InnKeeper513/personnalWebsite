@@ -1,0 +1,32 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'portfolio/css/contact.css'%}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="text-container">
+    <p>Click the button below to send me a message :D </p>
+  </div>
+  <div class="form">
+    <div class="mail"></div>
+    <h1>Mail form</h1>
+    <form action="">
+      <input type="text" placeholder="Your name"/>
+      <input type="text" placeholder="E-mail"/>
+      <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+      <div class="submit">Send</div>
+    </form>
+  </div>
+
+  <div class="ok_message">
+  <span>I will reply to you soon!</span>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'portfolio/js/contact.js'%}"></script>
+{% endblock %}
