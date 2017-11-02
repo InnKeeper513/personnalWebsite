@@ -11,27 +11,67 @@
 {% endblock %}
 
 {% block body %}
-<section class="get-in-touch">
-   <h1 class="title">Get in touch</h1>
-   <form class="contact-form row">
-      <div class="form-field col x-50">
-         <input id="name" class="input-text js-input" type="text" required>
-         <label class="label" for="name">Name</label>
-      </div>
-      <div class="form-field col x-50">
-         <input id="email" class="input-text js-input" type="email" required>
-         <label class="label" for="email">E-mail</label>
-      </div>
-      <div class="form-field col x-100">
-         <input id="message" class="input-text js-input" type="text" required>
-         <label class="label" for="message">Message</label>
-      </div>
-      <div class="form-field col x-100 align-center">
-         <input class="submit-btn" type="submit" value="Submit">
-      </div>
-   </form>
-</section>
+<div class="container">
 
+    <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+      {% load widget_tweaks %}
+      {% csrf_token %}
+<fieldset>
+<div class="description">
+  <h2>Contact Me !</h2>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Name</label>
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  {% render_field form.name class+="form-control " %}
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Text input-->
+       <div class="form-group">
+  <label class="col-md-4 control-label">E-Mail</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+          {% render_field form.email class+="form-control " %}
+
+    </div>
+  </div>
+</div>
+
+<!-- Text area -->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Project Description</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        {% render_field form.text class+="form-control " %}
+  </div>
+  </div>
+</div>
+
+<!-- Success message -->
+<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
 {% endblock %}
 
 {% block scripts %}

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'widget_tweaks',
     'localjava.apps.LocaljavaConfig',
     'portfolio.apps.PortfolioConfig',
     'django.contrib.admin',
