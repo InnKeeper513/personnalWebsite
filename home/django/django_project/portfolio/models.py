@@ -38,7 +38,7 @@ class Language(models.Model):
         return self.project_name
 
 class Projects(models.Model):
-
+    project_id = models.AutoField(primary_key=True)
     project_name = models.CharField(max_length=50,unique=True)
     project_progress = models.IntegerField(blank = True)
     project_description = models.CharField(max_length=300)
@@ -51,3 +51,11 @@ class Projects(models.Model):
 
     def __str__(self):
         return self.project_name
+
+class Contact_Info(models.Model):
+    email = models.CharField(max_length=30,primary_key=True)
+    name = models.CharField(max_length=30)
+    text = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.email

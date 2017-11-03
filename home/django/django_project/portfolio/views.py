@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Projects
+from .forms import ContactForm
 # Create your views here.
 
 def index(request):
@@ -37,4 +38,14 @@ def project(request):
     return render(request, 'portfolio/project.html', context)
 
 def contact(request):
-    return render(request, 'portfolio/contact.html')
+
+    form = ContactForm()
+
+    if request.method == 'POST':
+        form = ContactForm(data=request.POST)
+        if form.is_valid():
+            new_contact = form.save()
+            form = ContactForm()
+
+    args = {'form':form}
+    return render(request, 'portfolio/contact.html', args)
