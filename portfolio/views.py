@@ -1,8 +1,8 @@
+from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render
 from .models import Projects
 from .forms import ContactForm
-from jerry_portfolio import settings
 
 # Create your views here.
 
@@ -47,15 +47,15 @@ def contact(request):
         form = ContactForm(data=request.POST)
         if form.is_valid():
             new_contact = form.save(commit=False)
-            # Send me an email when someone subscribes
-
-            subject = "New Email",
-            message = new_contact.name + " with email of: " + new_contact.email+ " sends a message: " + new_contact.text
-            from_email = settings.EMAIL_HOST_USER
-            to_list = ['jerrytang513@hotmail.com',settings.EMAIL_HOST_USER]
-            printf(settings.EMAIL_HOST_USER)
-            send_mail(subject,message,from_email,to_list,fail_silently=False)
             new_contact.save()
+
+            subject = 'New Email From DJango'
+            message = new_contact.name + " with email of: " + new_contact.email+ " sends a message: " + new_contact.text
+            from_email = 'EXAMPLE@gmail.com'
+            to_email = "EXAMPLE@hotmail.com"
+            recipient = [to_email]
+            send_mail(subject, message, from_email, recipient, fail_silently=False)
+           
 
     form = ContactForm()
     args = {'form':form}
