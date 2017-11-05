@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-
+from portfolio import views as port_view
 urlpatterns = [
     url(r'', include('portfolio.urls', namespace='portfolio')),
     url(r'^admin/', admin.site.urls),
     url(r'localjava/',include('localjava.urls',namespace='localjava')),
+    url(r'home/',port_view.home,name='home')
 ]

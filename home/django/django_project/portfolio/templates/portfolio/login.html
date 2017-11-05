@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>BETA</title>
+  </head>
+  <body>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/css/login.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+    <header>
+      <img src="{% static 'portfolio/resource/myLogo.png'%}">
+    </header>
+
+    <div class="introduction">
+      <p>This is an on-going project that is used
+        to keep notes, documents, maintain a TODO list
+        and also It will be used to automate all of
+        my works :D
+      </p>
+    </div>
+    <div class="login_form">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">Login</button>
+    <a href="{% url 'portfolio:signup'%}" class="button">Sign Up</a>
+  </form>
+    </div>
+
+    <div class="progress">
+      <!-- Load the database to keep track of the
+      website's development process
+      -->
+    </div>
+  </body>
+</html>

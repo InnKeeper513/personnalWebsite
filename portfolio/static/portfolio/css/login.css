@@ -1,0 +1,54 @@
+body, html {
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0px 0px 0px 0px;
+}
+
+header{
+  background-color: grey;
+  width: 100%;
+  min-height: 20vh;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  border-bottom-width: 3px;
+}
+
+header img{
+  padding-top:10px;
+  padding-left: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.login_form{
+  display: inline-block;
+  width: 30%;
+  position: relative;
+  top:6%;
+  left: 10%;
+  font-family: 'Oswald', sans-serif;
+
+}
+.introduction{
+  display: inline-block;
+  padding-top: 3%;
+  width:50%;
+  height: 60%;
+}
+
+.introduction p{
+  padding-left: 20px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+}
+
+a .button{
+  -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}

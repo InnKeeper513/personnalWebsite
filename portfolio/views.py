@@ -1,8 +1,11 @@
 from django.conf import settings
 from django.core.mail import send_mail
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.views.generic import View
+from django.contrib.auth.decorators import login_required
 from .models import Projects
-from .forms import ContactForm
+from .forms import ContactForm, UserForm, SignUpForm
 
 # Create your views here.
 
@@ -41,22 +44,36 @@ def project(request):
     return render(request, 'portfolio/project.html', context)
 
 def contact(request):
-
-
     if request.method == 'POST':
         form = ContactForm(data=request.POST)
         if form.is_valid():
             new_contact = form.save(commit=False)
             new_contact.save()
-
             subject = 'New Email From DJango'
             message = new_contact.name + " with email of: " + new_contact.email+ " sends a message: " + new_contact.text
-            from_email = 'EXAMPLE@gmail.com'
-            to_email = "EXAMPLE@hotmail.com"
+            from_email = 'jerrytang513a@gmail.com'
+            to_email = "jerrytang513@hotmail.com"
             recipient = [to_email]
             send_mail(subject, message, from_email, recipient, fail_silently=False)
-           
 
     form = ContactForm()
     args = {'form':form}
     return render(request, 'portfolio/contact.html', args)
+
+@login_required
+def home(request):
+    return render(request, 'portfolio/home.html')
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password')
+            user = authenticate(username=username,password=raw_password)
+            login(request,user)
+            return redirect('home')
+    else:
+        form = SignUpForm()
+    return render(request, 'portfolio/register.html',{'form':form})
