@@ -1,40 +1,111 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
   <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>BETA</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'portfolio/css/login.css'%}">
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../../../assets/js/vendor/popper.min.js"></script>
+        <script src="../../../../dist/js/bootstrap.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </head>
   <body>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'portfolio/css/login.css'%}">
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
     <header>
-      <img src="{% static 'portfolio/resource/myLogo.png'%}">
-    </header>
+      <div class="blog-masthead">
+          <div class="container">
+            <nav class="nav">
+              <a class="nav-link active" href="#">Home</a>
+              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#">Documentation</a>
+            </nav>
+          </div>
+        </div>
 
-    <div class="introduction">
-      <p>This is an on-going project that is used
-        to keep notes, documents, maintain a TODO list
-        and also It will be used to automate all of
-        my works :D
-      </p>
-    </div>
-    <div class="login_form">
-      <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-    <button type="submit">Login</button>
-    <a href="{% url 'portfolio:signup'%}" class="button">Sign Up</a>
-  </form>
-    </div>
+        <div class="blog-header">
+          <div class="container">
+            <h1 class="blog-title">A Functional Notebook App</h1>
+            <p class="lead blog-description">Contain Latex, Code Snippets and more...</p>
+          </div>
+        </div>
+      </header>
 
-    <div class="progress">
-      <!-- Load the database to keep track of the
-      website's development process
-      -->
-    </div>
+      <main role="main" class="container">
+
+          <div class="row">
+
+            <div class="col-sm-7 blog-main">
+
+              <div class="blog-post">
+                <h2 class="blog-post-title">Update 1</h2>
+                <p class="blog-post-meta">November 5th, 2017</p>
+
+                <hr>
+
+                <h2>Basic Functionalities:</h2>
+                <ol>
+                  <li>Django's sign up backend</li>
+                  <li>Django's log in backend</li>
+                  <li>Django's lost password backend</li>
+                  <li>A little testing page displays user name</li>
+                  <li>Replaced layout with Bootstrap</li>
+                </ol>
+                <h3>TODO list</h3>
+                <ul>
+                  <li>Modification to Django, and make this section of the website
+                      into a different app
+                  </li>
+                  <li>
+                    Reset password functionality
+                  </li>
+                  <li>
+                    Create documentation and features page
+                  </li>
+                  <li>
+                    Provide link to the portfolio website
+                  </li>
+                </ul>
+                <p>This is just a beginning, more features and plannings will come!<br>
+                   Feel free to contact me for future plans <a href="jerrytang513@hotmail.com">jerrytang513@hotmail.com</a></p>
+              </div><!-- /.blog-post -->
+            </div><!-- /.blog-main -->
+
+            <aside class="col-sm-5 blog-sidebar">
+              <div class="sidebar-module sidebar-module-inset">
+                <div class="login_form">
+                  <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                <button class="login_button" type="submit">Login</button>&nbsp
+                <button class="login_button" type="button" onclick="window.location.href='http://127.0.0.1:8000/register/'">Sign Up</button>&nbsp
+                <a href="http://127.0.0.1:8000/reset-password/" class="button">Forget Password?</a>
+              </form>
+                </div>
+              </div>
+
+              <div class="sidebar-module">
+                <h4>Archives</h4>
+                <ol class="list-unstyled">
+                  <li><a href="#">November 2017</a></li>
+                </ol>
+              </div>
+            </aside><!-- /.blog-sidebar -->
+          </div><!-- /.row -->
+        </main><!-- /.container -->
+
+    <footer class="blog-footer">
+        <p> Ruijie Tang @ 2017</p>
+    </footer>
+
   </body>
 </html>
