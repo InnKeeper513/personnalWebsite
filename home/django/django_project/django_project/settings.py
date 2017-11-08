@@ -9,12 +9,20 @@ https://docs.djangoproject.com/en/1.8/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_USE_TLS=True
+#EMAIL_HOST='smtp.gmail.com'
+#EMAIL_HOST_USER='jerrytang513a@gmail.com'
+#EMAIL_HOST_PASSWORD='1652704931aA!'
+#DEFAULT_FROM_EMAIL='jerrytang513a@gmail.com'
+#EMAIL_PORT=587
+#LOGIN_REDIRECT_URL = 'home'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS=True
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER='jerrytang513a@gmail.com'
-EMAIL_HOST_PASSWORD='1652704931a'
-DEFAULT_FROM_EMAIL='jerrytang513a@gmail.com'
+EMAIL_HOST='smtp.sendgrid.net'
+EMAIL_HOST_USER='apikey'
+EMAIL_HOST_PASSWORD='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'
 EMAIL_PORT=587
 LOGIN_REDIRECT_URL = 'home'
 
@@ -48,6 +56,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'portfolio.apps.PortfolioConfig',
     'localjava.apps.LocaljavaConfig',
+    'simplenote.apps.SimplenoteConfig',
 )
 
 MIDDLEWARE_CLASSES = (

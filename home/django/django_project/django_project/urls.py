@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from portfolio import views as port_view
+from simplenote import views as simple_view
 from django.contrib.auth.views import (
     password_reset, password_reset_done, password_reset_confirm, password_reset_complete
 )
@@ -26,8 +27,10 @@ urlpatterns = [
     url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
         password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset-password/complete/$', password_reset_complete, name='password_reset_complete'),
+
     url(r'', include('portfolio.urls', namespace='portfolio')),
+    url(r'^simplenote/', include('simplenote.urls', namespace='simplenote')),
     url(r'^admin/', admin.site.urls),
-    url(r'localjava/',include('localjava.urls',namespace='localjava')),
-    url(r'home/',port_view.home,name='home')
+    url(r'^localjava/',include('localjava.urls',namespace='localjava')),
+    url(r'^home/',simple_view.home,name='home')
 ]
