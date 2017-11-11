@@ -21,6 +21,23 @@
 		});
 	};
 
+	var slideIndex = 1;
+	showDivs(slideIndex);
+
+	function plusDivs(n) {
+	  showDivs(slideIndex += n);
+	}
+
+	function showDivs(n) {
+	  var i;
+	  var x = document.getElementsByClassName("mySlides");
+	  if (n > x.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = x.length}
+	  for (i = 0; i < x.length; i++) {
+	     x[i].style.display = "none";
+	  }
+	  x[slideIndex-1].style.display = "block";
+	};
 
 $('#number1').jQuerySimpleCounter({end: 8,duration: 3000});
 $('#number2').jQuerySimpleCounter({end: 6,duration: 3000});
@@ -35,8 +52,8 @@ $('#number4').jQuerySimpleCounter({end: 2,duration: 2500});
 
            for(var i = 0; i < $(li).length; i++){
              $($(li)[i]).stop().animate({
-             'height':'18px'
-           }, 300 + (i * 150));
+	             'height':'18px'
+           		}, 300 + (i * 150));
            }
          }, function(){
            $('li', this).stop().animate({
@@ -44,3 +61,14 @@ $('#number4').jQuerySimpleCounter({end: 2,duration: 2500});
            }, 250);
          });
         });
+
+// To add a unique id for all projects
+// To add a unique id for a href
+// To assign images for each pop up window
+//
+$(document).ready(function(){
+	var all = document.getElementByTagName("article");
+	for(var i = 0; i < all.length; i++){
+		console.log(i);
+	}
+});

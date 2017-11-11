@@ -3,6 +3,7 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'portfolio/css/project.css' %}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"
 {% endblock %}
 
 {% block body %}
@@ -49,21 +50,52 @@
 
 {% for combine in combine_list %}
 <article class="entry">
-  <a>
+  <a href="#popup1">
     <aside>
       <strong>{{ combine.title}}</strong>
         <p>{{ combine.language }}<br></p>
         <p id="desc">{{ combine.description}}</p>
     </aside>
     <i class="fa fa-chevron-circle-down fa-5x" aria-hidden="true"></i>
-
   </a>
-  <ul>
-    <li style="background-color:#246f41"></li>
-    <li style="background-color:#f57b20"></li>
-    <li style="background-color:#433e42"></li>
-  </ul>
 </article>
+
+<!--This part is to attach a pop up model for the project-->
+
+<div id="popup1" class="overlay">
+	<div class="popup">
+		<a href="#close" title="Close" class="close">X</a>
+		<h2>{{ combine.title}}</h2>
+		<div class="language-container">
+			 <i class="devicon-csharp-line-wordmark colored"></i>
+			 <i class="devicon-csharp-line-wordmark colored"></i>
+			 <i class="devicon-csharp-line-wordmark colored"></i>
+		</div>
+		<hr>
+    <div class="container">
+		    <p>{{combine.detail}}</p>
+    </div>
+		<div class="w3-content w3-display-container">
+
+      <img class="mySlides" src="{% static 'portfolio/media/portfolio_website/portfolio1.png'%}" style="width:100%;height:auto">
+      <img class="mySlides" src="{% static 'portfolio/media/portfolio_website/portfolio2.png'%}" style="width:100%;height:auto">
+      <img class="mySlides" src="{% static 'portfolio/media/portfolio_website/portfolio3.png'%}" style="width:100%;height:auto">
+
+			<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+			<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+		</div>
+
+		<h3>Features</h3>
+		<ul>
+      {% for feature in combine.features.all%}
+			   <li>{{feature.feature_desc}}</li>
+      {% endfor %}
+		</ul>
+</div>
+
+</div>
+
+
 {% endfor %}
 <!--
 <article class="entry">
