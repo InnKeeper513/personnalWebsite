@@ -9,7 +9,12 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS=True
+EMAIL_HOST='smtp.sendgrid.net'
+EMAIL_HOST_USER='apikey'
+EMAIL_HOST_PASSWORD='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'
+EMAIL_PORT=587
 LOGIN_REDIRECT_URL = 'home'
 
 import os
@@ -36,12 +41,14 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'localjava.apps.LocaljavaConfig',
     'portfolio.apps.PortfolioConfig',
+    'simplenote.apps.SimplenoteConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'markdownx',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +130,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'

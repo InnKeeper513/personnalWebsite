@@ -22,29 +22,11 @@
 	};
 
 	var slideIndex = 1;
-	showDivs(slideIndex);
-
-	function plusDivs(n) {
-	  showDivs(slideIndex += n);
-	}
-
-	function showDivs(n) {
-	  var i;
-	  var x = document.getElementsByClassName("mySlides");
-	  if (n > x.length) {slideIndex = 1}
-	  if (n < 1) {slideIndex = x.length}
-	  for (i = 0; i < x.length; i++) {
-	     x[i].style.display = "none";
-	  }
-	  x[slideIndex-1].style.display = "block";
-	};
 
 $('#number1').jQuerySimpleCounter({end: 8,duration: 3000});
 $('#number2').jQuerySimpleCounter({end: 6,duration: 3000});
 $('#number3').jQuerySimpleCounter({end: 7,duration: 2000});
 $('#number4').jQuerySimpleCounter({end: 2,duration: 2500});
-
-
 
         $(document).ready(function(){
          $('.entry').hover(function(){
@@ -62,13 +44,52 @@ $('#number4').jQuerySimpleCounter({end: 2,duration: 2500});
          });
         });
 
-// To add a unique id for all projects
-// To add a unique id for a href
+
 // To assign images for each pop up window
-//
+
 $(document).ready(function(){
-	var all = document.getElementByTagName("article");
+	var all = document.getElementsByTagName('article');
+	var pop = document.getElementsByClassName('overlay');
 	for(var i = 0; i < all.length; i++){
-		console.log(i);
+		all[i].id = i;
+		all[i].getElementsByTagName('a')[0].setAttribute('href','#popup'+i);
+		pop[i].id = 'popup' + i;
+
+		// give the button there own unique ids.
+		pop[i].getElementsByTagName('button')[0].setAttribute('id','left'+i);
+		pop[i].getElementsByTagName('button')[1].setAttribute('id','right'+i);
+
+		// give the images unique id
+		var images = pop[i].getElementsByTagName('img');
+		for(var j = 0; j < images.length; j++){
+			images[j].className +='mySlides'+i;
+		}
 	}
 });
+
+// Use to initialize all of the image render
+init();
+
+function init(){
+	var image_styles = document.getElementsByTagName('overlay');
+	for(var i = 0; i < image_styles.length; i++){
+		var images = image_styles[i].getElementsByTagName('image')
+	}
+}
+
+function plusDivs(n,ele) {
+	var lastChar = ele.id.val[ele.length-1];
+	showDivs(slideIndex += n,lastChar);
+}
+
+function showDivs(n,char) {
+	var i;
+	var x = document.getElementsByClassName("mySlides"+char);
+	if (n > x.length) {slideIndex = 1}
+	if (n < 1) {slideIndex = x.length}
+	for (i = 0; i < x.length; i++) {
+		 x[i].style.display = "none";
+	}
+	if(x[slideIndex-1])
+		x[slideIndex-1].style.display = "block";
+};
