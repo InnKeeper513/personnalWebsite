@@ -15,20 +15,29 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-default navbar-fixed-top navbar-light bg-faded navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#"><img src="{% static 'portfolio/resource/myLogo.png' %}"></a>
+  <nav class="navbar navbar-default">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="#"><img src="{% static 'portfolio/resource/myLogo.png' %}"></a>
+              <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          </div>
+          <div class="collapse navbar-collapse" id="navcol-1">
+              <ul class="nav navbar-nav">
+                  <li class="active" role="presentation"><a href="{% url 'portfolio:index' %}">Home </a></li>
+                  <li role="presentation"><a href="{% url 'portfolio:about' %}">About Me</a></li>
+                  <li role="presentation"><a href="{% url 'portfolio:project' %}">Projects </a></li>
+                  <li role="presentation"><a href="{% url 'portfolio:contact' %}">Contact </a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="active" role="presentation"><a href="{% url 'simplenote:login' %}">Simple Note APP</a></li>
+              </ul>
+          </div>
       </div>
-      <ul class="nav navbar-nav">
-        <li><a href="{% url 'portfolio:index' %}">Home</a></li>
-        <li><a href="{% url 'portfolio:about' %}">About Me</a></li>
-        <li><a href="{% url 'portfolio:project' %}">Projects</a></li>
-        <li><a href="{% url 'portfolio:contact' %}">Contact</a></li>
-        <li><a href="{% url 'simplenote:login' %}">Beta Feature(In Development)</a></li>
-      </ul>
-    </div>
   </nav>
+
+
+
+
 {% block body %}
 {% endblock %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

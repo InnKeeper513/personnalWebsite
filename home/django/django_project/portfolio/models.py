@@ -37,6 +37,19 @@ class Language(models.Model):
     def __str__(self):
         return self.project_name
 
+class Features(models.Model):
+    feature_desc = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.feature_desc
+
+class Project_Image(models.Model):
+    name = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='project_image',blank=True)
+
+    def __str__(self):
+        return self.name
+
 class Projects(models.Model):
     project_id = models.AutoField(primary_key=True)
     project_name = models.CharField(max_length=50,unique=True)
@@ -48,9 +61,13 @@ class Projects(models.Model):
     endDate = models.DateTimeField(null=True,blank=True)
     issue = models.ForeignKey(IssueTracker,null=True,blank = True)
     todoList = models.ForeignKey(TodoList,null=True,blank = True)
+    project_detail_desc = models.TextField(null=True,max_length=500,blank = True)
+    features = models.ManyToManyField(Features,blank = True)
+    image = models.ManyToManyField(Project_Image,blank = True)
 
     def __str__(self):
         return self.project_name
+
 
 class Contact_Info(models.Model):
     email = models.CharField(max_length=30,primary_key=True)

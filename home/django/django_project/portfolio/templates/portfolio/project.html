@@ -3,6 +3,7 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'portfolio/css/project.css' %}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"
 {% endblock %}
 
 {% block body %}
@@ -56,136 +57,45 @@
         <p id="desc">{{ combine.description}}</p>
     </aside>
     <i class="fa fa-chevron-circle-down fa-5x" aria-hidden="true"></i>
-
   </a>
-  <ul>
-    <li style="background-color:#246f41"></li>
-    <li style="background-color:#f57b20"></li>
-    <li style="background-color:#433e42"></li>
-  </ul>
-</article>
-{% endfor %}
-<!--
-<article class="entry">
-  <a>
-    <aside>
-      <strong>Schedular</strong>
-      <p>Java</p>
-    </aside>
-
-    <i></i>
-  </a>
-  <ul>
-    <li style="background-color:#8dcf0a"></li><li style="background-color:#5a9619"></li><li style="background-color:#2c2c2c"></li>
-  </ul>
 </article>
 
-<article class="entry">
-  <a>
-    <aside>
-      <strong>Tetris</strong>
-      <p>Javascript</p>
-    </aside>
+<!--This part is to attach a pop up model for the project-->
 
-    <i></i>
-  </a>
-  <ul>
-    <li style="background-color:#d4132e"></li><li style="background-color:#282627"></li><li style="background-color:#7c7c7c"></li>
-  </ul>
-</article>
+<div class="overlay">
+	<div class="popup">
+		<a href="#close" title="Close" class="close">X</a>
+		<h2>{{ combine.title}}</h2>
+		<div class="language-container">
+			 <i class="devicon-csharp-line-wordmark colored"></i>
+			 <i class="devicon-csharp-line-wordmark colored"></i>
+			 <i class="devicon-csharp-line-wordmark colored"></i>
+		</div>
+		<hr>
+    <div class="container">
+		    <p>{{combine.detail}}</p>
+    </div>
+		<div class="w3-content w3-display-container">
+      {% for image in combine.images.all %}
+        <img src="{{ image.image.url }}" style="width:100%;height:auto" alt="{{ image.name }}">
+      {% endfor %}
+			<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1,this)">&#10094;</button>
+			<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1,this)">&#10095;</button>
+		</div>
 
-<article class="entry">
-  <a>
-    <aside>
-      <strong>Constructor Board Game</strong>
-      <p>C++</p>
-    </aside>
-
-    <i></i>
-  </a>
-  <ul>
-    <li style="background-color:#0084be"></li><li style="background-color:#014c71"></li><li style="background-color:#329e00"></li>
-  </ul>
-</article>
-
-<article class="entry">
-  <a>
-    <aside>
-      <strong>Physics Simulator</strong>
-      <p>Java</p>
-    </aside>
-
-    <i></i>
-  </a>
-  <ul>
-    <li style="background-color:#ecce00"></li><li style="background-color:#333333"></li><li style="background-color:#cccccc"></li>
-  </ul>
-</article>
-
-<article class="entry">
-  <a>
-    <aside>
-      <strong>Canadian Climate Analysis</strong>
-      <p>Java</p>
-    </aside>
-
-    <i></i>
-  </a>
-  <ul>
-    <li style="background-color:#ffa43f"></li><li style="background-color:#afbc22"></li><li style="background-color:#3c8dce"></li>
-  </ul>
-</article>
-
-<article class="entry">
-  <a>
-    <aside>
-      <strong>Pacman</strong>
-      <p>Java</p>
-    </aside>
-
-    <i></i>
-  </a>
-  <ul>
-    <li style="background-color:#d43254"></li><li style="background-color:#2f5fac"></li><li style="background-color:#57aeff"></li>
-  </ul>
-</article>
-
-<article class="entry">
-  <a>
-    <aside>
-      <strong>The Magic Tower</strong>
-      <p>Java</p>
-    </aside>
-
-    <i></i>
-  </a>
-  <ul>
-    <li style="background-color:#2b8dbd"></li><li style="background-color:#264c5f"></li><li style="background-color:#f36000"></li>
-  </ul>
-</article>
--->
-<!--
-<article class="entry">
-  <a>
-    <aside>
-      <strong>Evoke Modern</strong>
-      <p>Pacific Northwest Modern Homes</p>
-    </aside>
-
-    <i></i>
-  </a>
-  <ul>
-    <li style="background-color:#cecccf"></li><li style="background-color:#6581a0"></li><li style="background-color:#272425"></li>
-  </ul>
-</article>
--->
+		<h3>Features</h3>
+		<ul>
+      {% for feature in combine.features.all%}
+			   <li>{{feature.feature_desc}}</li>
+      {% endfor %}
+		</ul>
 </div>
 
-<!--Typekit-->
-<script type="text/javascript" src="//use.typekit.net/wyr7rug.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</div>
 
 
+{% endfor %}
+</div>
 
 
 {% endblock %}
@@ -194,7 +104,4 @@
 <script src="{% static 'portfolio/js/project.js'%}"</script>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-<script>
-particlesJS.load('particles-js', '{% static "portfolio/json/particles.json" %}', function(){});
-</script>
 {% endblock %}

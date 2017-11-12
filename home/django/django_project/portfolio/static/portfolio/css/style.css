@@ -1,15 +1,36 @@
-body, html {
-    min-height: 100vh;
-    height: 100%;
-    width: 100%;
-    font-family: 'Signika', sans-serif;
+body {
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+  line-height:1.42857143;
+  color:#333;
+  background-color:#29313b;
 }
 
-nav img{
-    top:0px;
-    left: 0px;
-    width: 30px;
-    height: 30px;
+.navbar-default {
+  background-color:#6d2222;
+  border-color:#1e1313;
+}
+
+img {
+  width:40px;
+  height:40px;
+  margin-top:-10px;
+}
+
+.navbar-default {
+  background-image:-webkit-linear-gradient(top,#c32a2a 0,#4e1d1d 100%);
+  background-image:-o-linear-gradient(top,#fff 0,#f8f8f8 100%);
+  background-image:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#f8f8f8));
+  background-image:linear-gradient(to bottom,#fff 0,#f8f8f8 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff8f8f8', GradientType=0);
+  filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  background-repeat:repeat-x;
+  margin-top:20px;
+  margin-left:10px;
+  font-size:20px;
+  margin-right:10px;
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 1px 5px rgba(0,0,0,.075);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 1px 5px rgba(0,0,0,.075);
 }
 
 .full {

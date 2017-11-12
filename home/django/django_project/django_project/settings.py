@@ -126,6 +126,8 @@ USE_TZ = True
 
 STATIC_ROOT = '/home/django/django_project/django_project/static'
 STATIC_URL = '/static/'
+MEDIA_ROOT = '/home/django/django_project/django_project/media'
+MEDIA_URL = '/media/'
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 # Allow Django from all hosts. This snippet is installed from
 # /var/lib/digitalocean/allow_hosts.py
