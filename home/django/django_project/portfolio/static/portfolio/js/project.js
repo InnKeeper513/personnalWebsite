@@ -23,8 +23,8 @@
 
 	var slideIndex = 1;
 
-$('#number1').jQuerySimpleCounter({end: 8,duration: 3000});
-$('#number2').jQuerySimpleCounter({end: 6,duration: 3000});
+$('#number1').jQuerySimpleCounter({end: 10,duration: 3200});
+$('#number2').jQuerySimpleCounter({end: 8,duration: 3000});
 $('#number3').jQuerySimpleCounter({end: 7,duration: 2000});
 $('#number4').jQuerySimpleCounter({end: 2,duration: 2500});
 

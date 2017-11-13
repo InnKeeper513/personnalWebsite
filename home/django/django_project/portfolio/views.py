@@ -16,13 +16,14 @@ def about(request):
     return render(request, 'portfolio/about.html')
 
 class Combine:
-    def __init__(self,title,language,description,detail,features,images):
+    def __init__(self,title,language,description,detail,features,images,front_image):
         self.title=title
         self.language=language
         self.description=description
         self.detail=detail
         self.features=features
         self.images=images
+        self.front_image=front_image
 
 def project(request):
 
@@ -40,9 +41,9 @@ def project(request):
                 temp_string.append(key)
 
         if project.project_detail_desc is None:
-            combine_obj = Combine(project.project_name,",".join(temp_string),project.project_description,project.project_description,project.features,project.image)
+            combine_obj = Combine(project.project_name,",".join(temp_string),project.project_description,project.project_description,project.features,project.image,project.front_image)
         else:
-            combine_obj = Combine(project.project_name,",".join(temp_string),project.project_description,project.project_detail_desc,project.features,project.image)
+            combine_obj = Combine(project.project_name,",".join(temp_string),project.project_description,project.project_detail_desc,project.features,project.image,project.front_image)
 
         combine_list.append(combine_obj)
 

@@ -51,12 +51,8 @@
 {% for combine in combine_list %}
 <article class="entry">
   <a>
-    <aside>
-      <strong>{{ combine.title}}</strong>
-        <p>{{ combine.language }}<br></p>
-        <p id="desc">{{ combine.description}}</p>
-    </aside>
-    <i class="fa fa-chevron-circle-down fa-5x" aria-hidden="true"></i>
+    <img src="{{combine.front_image.url}}">
+    <p>{{ combine.title}}</p>
   </a>
 </article>
 

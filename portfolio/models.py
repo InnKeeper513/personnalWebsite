@@ -64,6 +64,7 @@ class Projects(models.Model):
     project_detail_desc = models.TextField(null=True,max_length=500,blank = True)
     features = models.ManyToManyField(Features,blank = True)
     image = models.ManyToManyField(Project_Image,blank = True)
+    front_image = models.ImageField(upload_to='front_image',blank=True)
 
     def __str__(self):
         return self.project_name

@@ -1,0 +1,41 @@
+.sidebar{
+  width: 15%;
+  height: 80%;
+  position: absolute;
+  top: 0 px;
+  left: 0 px;
+  border-style: solid;
+  border-color: black
+
+}
+.task_list{
+  padding-left: 17%;
+  padding-top: 2%;
+  width: 100%;
+  height: 100vh;
+}
+
+.contents {
+  height:100%;
+  width:95%;
+}
+
+.task_detail {
+  border-style:solid;
+  border-color:yellow;
+}
+
+.toolbar {
+  background-color:rgb(235,235,235);
+}
+.toolbar button{
+  top:50px;
+}
+
+.containment {
+  height:100%;
+}
+
+#schedule{
+  height: 100vh;
+}

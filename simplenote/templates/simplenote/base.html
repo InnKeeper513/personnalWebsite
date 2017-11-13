@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 {% load static %}
+
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Untitled</title>
-    <link rel="stylesheet" href="{% static 'simplenote/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'simplenote/css/base.css'%}">
+    {% block styles %}
+    {% endblock %}
 
 </head>
 
 <body>
+  <div class="container-fluid">
+
     <nav class="navbar navbar-default navigation-clean" style="padding:0px;">
         <div class="container">
             <div class="navbar-header"><a class="navbar-brand" href="#">simplenote</a>
@@ -29,14 +34,19 @@
         </div>
     </nav>
 
-    <footer id="footer">
+{% block body %}
+{% endblock %}
 
+  <footer id="footer">
     <div style= "background: black; text-align: center; margin: 0px; padding:10px">
-        <p style= "color:grey; font-family: raleway">Ruijie Tang @ 2017</p>
+      <p style= "color:grey; font-family: raleway">Ruijie Tang @ 2017</p>
     </div>
-</footer>
-    <script src="{% static 'simplenote/js/bootstrap.min.js'%}"></script>
-    <script src="{% static 'simplenote/js/jquery.min.js'%}"></script>
+  </footer>
+</div>
+
+{% block script %}
+{% endblock %}
+
 </body>
 
 </html>
