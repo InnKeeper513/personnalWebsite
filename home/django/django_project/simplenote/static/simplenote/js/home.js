@@ -54,9 +54,6 @@ app.controller('todoController', ['$scope',function(scope){
   scope.selectedTodo = 0;
   scope.levels = [];
   scope.subTasks = [];
-  // This field is used for managing the collapse level elements
-  scope.collapseDict = {};
-
 
   // Use to find the list of project that matches with the given id,
   // and then store these objects into scope.subTasks array
@@ -75,7 +72,6 @@ app.controller('todoController', ['$scope',function(scope){
     for(var i = 0; i < scope.subTasks.length; i++){
       if(!scope.levels.includes(scope.subTasks[i].project_level)){
         scope.levels.push(scope.subTasks[i].project_level);
-        scope.collapseDict[scope.subTasks[i].project_level]=false;
       }
     }
   }
@@ -89,7 +85,6 @@ app.controller('todoController', ['$scope',function(scope){
     return projectArr;
   }
 
-  // This will actually be called once created this page
   if(scope.todoList[0]){
     scope.project_detail = scope.todoList[0];
     levelScan(scope.project_detail);
@@ -102,18 +97,9 @@ app.controller('todoController', ['$scope',function(scope){
     // Change the detail page to the current selected object
     scope.project_detail = scope.todoList[$index];
 
-    // Clear contents and reset its sub tasks
+    // Clear contents
     scope.levels = [];
     scope.subTasks = [];
-    scope.collapseDict = [];
-    levelScan(scope.project_detail);
-  };
 
-  // This function will be used to manage the collapse levels
-  scope.collapseManager = function(level){
-    scope.collapseDict[level] = !scope.collapseDict[level];
-  }
-  scope.isCollapse = function(level){
-    return scope.collapseDict[level];
-  }
+  };
 }]);

@@ -1,8 +1,6 @@
 .todo{
   overflow-y: scroll;
-
 }
-
 .todo-list-item{
   border-style: solid;
   border-width: 1px;
@@ -55,9 +53,5 @@
 }
 
 #schedule{
-  height: 100vh;
-}
-
-#task{
   height: 100vh;
 }
