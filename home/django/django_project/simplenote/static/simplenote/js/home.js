@@ -19,7 +19,7 @@ var test2 = {
   project_name: "Test2",
   project_done: false,
   project_desc: "This is for testing2",
-  project_sub: null,
+  project_sub: [],
   project_id: 'AA2',
   project_attachment: null,
   project_create_date: "1343-07-13",
@@ -35,7 +35,7 @@ var test3 = {
   project_name: "Test3",
   project_done: true,
   project_desc: "This is for testing3",
-  project_sub: null,
+  project_sub: [],
   project_id: 'AA3',
   project_attachment: null,
   project_create_date: "1343-07-13",
@@ -48,6 +48,23 @@ var test3 = {
   project_spent_time: 100
 }
 
+function taskobj(name,done,desc,sub,id,attachment,createDate,startDate,deadLine,level,tag,emergence,status,spentTime){
+  this.project_name = name;
+  this.project_done = done;
+  this.project_desc = desc;
+  this.project_sub = sub;
+  this.project_id = id;
+  this.project_attachment = attachment;
+  this.project_create_date = createDate;
+  this.project_start_date = startDate;
+  this.project_dead_line = deadLine;
+  this.project_level = level;
+  this.project_tag = tag;
+  this.project_emergence = emergence;
+  this.project_status = status;
+  this.project_spent_time = spentTime;
+};
+
 app.controller('todoController', ['$scope',function(scope){
   scope.todoList = [test1,test2,test3];
   scope.hideDetail = true;
@@ -58,6 +75,7 @@ app.controller('todoController', ['$scope',function(scope){
   scope.subTasks = [];
   // This field is used for managing the collapse level elements
   scope.collapseDict = {};
+  scope.editMode = false;
 
 
   // Use to find the list of project that matches with the given id,
@@ -66,6 +84,7 @@ app.controller('todoController', ['$scope',function(scope){
     for(var i = 0; i < scope.todoList.length; i++){
       // There is a match of id
       if(subIds.includes(scope.todoList[i].project_id)){
+
         scope.subTasks.push(scope.todoList[i]);
       }
     }
@@ -135,12 +154,48 @@ app.controller('todoController', ['$scope',function(scope){
     }
     return null;
   }
+
+  // Check if the current task is parent
   scope.isParent = function(){
     if(scope.project_detail.project_level == 0)
       return true;
     return false;
   }
+  // Go to the parent task
   scope.gotoParent = function(){
     scope.updateDetail(scope.getParent().project_name);
+  }
+
+  scope.edit = function(){
+    scope.editMode = true;
+  }
+  scope.save = function(){
+    // TODO do something to save
+    scope.editMode = false;
+  }
+
+  scope.idGenerator = function(){
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+  }
+
+  // Will generate id
+  scope.addSubTask = function(){
+    var id = scope.idGenerator();
+    var newTask = new taskobj("new_task"+scope.todoList.length,null,null,[],id,null,null,null,null,scope.project_detail.project_level+1,null,null,null,null);
+    scope.todoList.push(newTask);
+    scope.project_detail.project_sub.push(id);
+    scope.selectedTodo = null;
+    scope.updateDetail("new_task"+scope.todoList.length);
+  }
+
+  scope.addTask = function(){
+    var id = scope.idGenerator();
+    var newTask = new taskobj("new_task"+scope.todoList.length,null,null,[],id,null,null,null,null,0,null,null,null,null);
+    scope.todoList.push(newTask);
+    scope.selectedTodo = null;
+    scope.updateDetail("new_task"+scope.todoList.length);
   }
 }]);
