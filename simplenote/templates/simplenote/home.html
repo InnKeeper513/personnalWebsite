@@ -36,12 +36,12 @@
                   <div class="todo" style="height:75vh;background-color:rgb(235,235,235);">
 
                       <!-- Angular JS used in rendering the todolist -->
-                      <div class="todo-list-item" ng-repeat="todo in todoList" ng-class="{'highlight-todo-item': $index == selectedTodo }" >
+                      <div class="todo-list-item" ng-repeat="todo in todoList" ng-class="{'highlight-todo-item': todoList[$index].project_name==selectedTodo}" >
                           <div class="row">
                               <div class="col-md-1">
                                   <input type="checkbox" style="height:50%;">
                               </div>
-                              <div class="col-md-11"  ng-click="updateDetail($index)">
+                              <div class="col-md-11"  ng-click="updateDetail(todo.project_name)">
                                   <p ng-bind="todo.project_name"></p>
                               </div>
                           </div>
@@ -53,20 +53,33 @@
               <!-- This is the detail of the task.
                    Once a task has been clicked, the detail will shown up-->
               <div class="col-md-6" style="overflow-y:scroll;background-color:rgb(235,235,235);height:75vh;">
+                  <div>
+                    <button type="button" class="btn btn-primary" ng-disabled="editMode" ng-click="edit()">
+                      edit
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-diabled="editMode" ng-click="addSubTask()">
+                      add subtask
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-disabled="!editMode" ng-click="save()">
+                      save
+                    </button>
+                  </div>
                   <div class="detail" ng-hide="todoList == null">
-                      <p style="height:38px;font-size:20px;">Task Name:<span ng-bind="project_detail.project_name"></span></p>
+                      <p style="height:38px;font-size:20px;"><span>Task Name: <input type="text" name="input" ng-disabled="!editMode" ng-model="project_detail.project_name" ng-trim="true"></span></p>
                       <p>Level:<span ng-bind="project_detail.project_level"></span></p>
                       <p>Emergence:<span ng-bind="project_detail.project_emergence"></span></p>
                       <p>Status:<span ng-bind="project_detail.project_status"></span></p>
                       <p>Time Spent:<span ng-bind="project_detail.project_spent_time"></span></p>
                       <p>Tag:<span ng-bind="project_detail.project_tag"></span></p>
 
-                      <p style="height:17px;">Descriptions:<span ng-bind="project_detail.project_desc"></span></p>
+                      <p style="height:17px;">Descriptions:</p><textarea style="width:100%;" ng-trim="true" ng-disabled="!editMode" ng-model="project_detail.project_desc"></textarea>
                       <hr>
                       <p>Creation Date:<span ng-bind="project_detail.project_create_date"></span></p>
-                      <p>Start Date:<span ng-bind="project_detail.project_start_date"></span></p>
-                      <p>Deadline:<span ng-bind="project_detail.project_dead_line"></span></p>
+                      <span>Start Date: <input type="text" name="input" ng-disabled="!editMode" ng-model="project_detail.project_start_date" ng-trim="true"></span>
+                      <span>Deadline: <input type="text" name="input" ng-disabled="!editMode" ng-model="project_detail.project_dead_line" ng-trim="true"></span>
                       <div class="btn-toolbar">
+                        <br>
+
                           <div class="btn-group" role="group">
                               <button class="btn btn-default" type="button">Add Attachment</button>
                               <button class="btn btn-default" type="button">Email Me</button>
@@ -76,7 +89,12 @@
                               <button class="btn btn-default" type="button">Button 2</button>
                           </div>
                       </div>
+                      <div ng-hide="isParent()">
+                        <h2>Parent Task: </h2>
+                        <button type="button" class="btn btn-primary" ng-click="gotoParent().project_name"><span ng-bind="getParent().project_name"></span></button>
+                      </div>
                       <h2>Sub Tasks: </h2>
+
                       <div class="subtask-level">
 <!-- TODO Check the error here. Caused by ng-repeat misuse
     TODO UPDATE: It is caused by the collapse class id -->
@@ -87,17 +105,15 @@
                             </button>
 
                               <div ng-show="isCollapse(sub)">
-                                  <div  ng-repeat="name in getProjectList(sub)" >
-                                    <p ng-bind="name.project_name"></p>
+                                  <div  ng-repeat="name in getProjectList(sub)" style="float:left">
+                                    <!-- This will guide to the selected task -->
+                                    <p class="btn btn-default" ng-bind="name.project_name" ng-click="updateDetail(name.project_name)"></p>
                                   </div>
                               </div>
-
                           </div>
-
                       </div>
                   </div>
               </div>
-
           </div>
       </div>
       </div>

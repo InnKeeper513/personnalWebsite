@@ -19,13 +19,13 @@ var test2 = {
   project_name: "Test2",
   project_done: false,
   project_desc: "This is for testing2",
-  project_sub: null,
+  project_sub: [],
   project_id: 'AA2',
   project_attachment: null,
   project_create_date: "1343-07-13",
   project_start_date: null,
   project_dead_line: null,
-  project_level: 0,
+  project_level: 1,
   project_tag: "TAG1",
   project_emergence: "Emergency",
   project_status: "Planning",
@@ -35,7 +35,7 @@ var test3 = {
   project_name: "Test3",
   project_done: true,
   project_desc: "This is for testing3",
-  project_sub: null,
+  project_sub: [],
   project_id: 'AA3',
   project_attachment: null,
   project_create_date: "1343-07-13",
@@ -51,11 +51,14 @@ var test3 = {
 app.controller('todoController', ['$scope',function(scope){
   scope.todoList = [test1,test2,test3];
   scope.hideDetail = true;
-  scope.selectedTodo = 0;
+  scope.selectedTodo = null;
+  scope.currentTask = null;
+  scope.project_detail = null;
   scope.levels = [];
   scope.subTasks = [];
   // This field is used for managing the collapse level elements
   scope.collapseDict = {};
+  scope.editMode = false;
 
 
   // Use to find the list of project that matches with the given id,
@@ -92,15 +95,22 @@ app.controller('todoController', ['$scope',function(scope){
   // This will actually be called once created this page
   if(scope.todoList[0]){
     scope.project_detail = scope.todoList[0];
+    scope.selectedTodo = scope.todoList[0].project_name;
     levelScan(scope.project_detail);
   }
 
-  scope.updateDetail = function($index){
+  scope.updateDetail = function(name){
     // Used to highlight the row that has been selected
-    scope.selectedTodo = $index;
+    scope.selectedTodo = name;
 
     // Change the detail page to the current selected object
-    scope.project_detail = scope.todoList[$index];
+    for(var a = 0; a < scope.todoList.length; a++){
+
+      if(scope.todoList[a].project_name == name){
+        scope.project_detail = scope.todoList[a];
+        break;
+      }
+    }
 
     // Clear contents and reset its sub tasks
     scope.levels = [];
@@ -116,4 +126,34 @@ app.controller('todoController', ['$scope',function(scope){
   scope.isCollapse = function(level){
     return scope.collapseDict[level];
   }
+  scope.getParent = function(){
+    for(var i = 0; i < scope.todoList.length; i++){
+      for(var j = 0; j < scope.todoList[i].project_sub.length; j++){
+        if(scope.todoList[i].project_sub[j] == scope.project_detail.project_id && scope.todoList[i].project_level == 0){
+          return scope.todoList[i]
+        }
+      }
+    }
+    return null;
+  }
+
+  // Check if the current task is parent
+  scope.isParent = function(){
+    if(scope.project_detail.project_level == 0)
+      return true;
+    return false;
+  }
+  // Go to the parent task
+  scope.gotoParent = function(){
+    scope.updateDetail(scope.getParent().project_name);
+  }
+
+  scope.edit = function(){
+    scope.editMode = true;
+  }
+  scope.save = function(){
+    // TODO do something to save
+    scope.editMode = false;
+  }
+
 }]);
