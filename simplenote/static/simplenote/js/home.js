@@ -81,6 +81,7 @@ app.controller('todoController', ['$scope',function(scope){
   scope.tagList = []
   // This field is used for managing the collapse level elements
   scope.collapseDict = {};
+  scope.addTag = "";
   scope.newTag = null;
   scope.editMode = false;
   scope.tagSearch = null;
@@ -177,16 +178,20 @@ app.controller('todoController', ['$scope',function(scope){
     return scope.collapseDict[level];
   }
   scope.getParent = function(){
-    for(var i = 0; i < scope.multiTodo[scope.currentMulti].length; i++){
-      for(var j = 0; j < scope.multiTodo[scope.currentMulti][i].project_sub.length; j++){
-        if(scope.multiTodo[scope.currentMulti][i].project_sub[j] == scope.project_detail.project_id && scope.multiTodo[scope.currentMulti][i].project_level == 0){
-          return scope.multiTodo[scope.currentMulti][i]
+    for(var i = 0; i < scope.multiTodo[0].length; i++){
+      for(var j = 0; j < scope.multiTodo[0][i].project_sub.length; j++){
+        if(scope.multiTodo[0][i].project_sub[j] == scope.project_detail.project_id){
+          return scope.multiTodo[0][i]
         }
       }
     }
     return null;
   }
-
+  scope.hasSubTaks = function(){
+    if(project_detail.project_sub.length != 0)
+      return false;
+    return true;
+  }
   // Check if the current task is parent
   scope.isParent = function(){
 
@@ -239,13 +244,12 @@ app.controller('todoController', ['$scope',function(scope){
     //TODO to add this subtask to its parent
     var id = scope.idGenerator();
     var number = scope.multiTodo[0].length;
-    var newTask = new taskobj("new_task"+number,null,null,[],id,null,scope.getCurrentDate(),null,null,scope.project_detail.project_level+1,null,null,null,null);
+    var newTask = new taskobj("new_task"+number,null,null,[],id,null,scope.getCurrentDate(),null,null,scope.project_detail.project_level+1,null,"none","none",null);
     scope.multiTodo[0].push(newTask);
     scope.currentMulti = 0;
     scope.project_detail.project_sub.push(id);
     scope.selectedTodo = null;
     scope.checkboxList = [];
-    scope.multiTodo[scope.currentMulti] = [];
     scope.updateDetail("new_task"+number);
   }
 
@@ -254,7 +258,7 @@ app.controller('todoController', ['$scope',function(scope){
     //TODO will get back to the parent
     var id = scope.idGenerator();
     var number = scope.multiTodo[0].length;
-    var newTask = new taskobj("new_task"+number,null,null,[],id,null,scope.getCurrentDate(),null,null,0,null,null,null,null);
+    var newTask = new taskobj("new_task"+number,null,null,[],id,null,scope.getCurrentDate(),null,null,0,null,"none","none",null);
     scope.multiTodo[0].push(newTask);
     scope.multiTodo[1].push(newTask);
     scope.selectedTodo = null;
@@ -274,21 +278,51 @@ app.controller('todoController', ['$scope',function(scope){
   scope.addCheckBox = function(todo){
     scope.checkboxList.push(todo);
   }
+  // recursive delete child once
+  scope.recursiveDeletion = function(subId){
+    // Once parent object is deleted, all of its child task will be deleted as well
+    for(var i = 0; i < scope.multiTodo[0].length; i++){
+      if(scope.multiTodo[0][i].project_id == subId){
+        for(var j = 0; j < scope.multiTodo[0][i].project_sub.length; j++){
+          scope.recursiveDeletion(scope.multiTodo[0][i].project_sub[j]);
+        }
+        scope.multiTodo[0].splice(i,1);
+        scope.todoList.splice(i,1);
+        break;
+      }
+    }
+    for(var i = 0; i < scope.multiTodo[1].length; i++){
+
+      if(scope.multiTodo[1][i].project_id == subId){
+        for(var j = 0; j < scope.multiTodo[1][i].project_sub.length; j++){
+          scope.recursiveDeletion(scope.multiTodo[1][i].project_sub[j]);
+        }
+
+        scope.multiTodo[1].splice(i,1);
+        break;
+      }
+    }
+  }
 
   scope.deleteSelectedTask = function(){
     // Once parent object is deleted, all of its child task will be deleted as well
+
     for(var i = 0; i < scope.checkboxList.length; i++){
+
+      // If already parent, then do nothing
+      if(scope.checkboxList[i].project_sub.length != 0){
+        for(var j = 0; j < scope.checkboxList[i].project_sub.length; j++){
+          alert(scope.checkboxList[i].project_sub[j]);
+          scope.recursiveDeletion(scope.checkboxList[i].project_sub[j]);
+        }
+      }
 
       var index1 = scope.multiTodo[0].indexOf(scope.checkboxList[i]);
       var index2 = scope.multiTodo[1].indexOf(scope.checkboxList[i]);
 
-      // If already parent, then do nothing
-      if(scope.checkboxList[i].project_level != 0){
-
-      }
-
       if(scope.multiTodo[0].includes(scope.checkboxList[i]) && index1 != -1){
         scope.multiTodo[0].splice(index1,1);
+        scope.todoList.splice(index1,1);
       }
       if(scope.multiTodo[1].includes(scope.checkboxList[i]) && index2 != -1){
         scope.multiTodo[1].splice(index2,1);
@@ -310,12 +344,23 @@ app.controller('todoController', ['$scope',function(scope){
     scope.newTag = "";
   }
 
+  // For button click
+  scope.gotoTag = function(tag){
+    scope.multiTodo[2] = [];
+    for(var i = 0; i < scope.todoList.length; i++){
+      if(scope.todoList[i].project_tag.includes(tag)){
+        scope.multiTodo[2].push(scope.todoList[i]);
+      }
+    }
+    scope.currentMulti = 2;
+    scope.updateDetail(scope.multiTodo[2][0].project_name);
+  }
+  // For search bar
   scope.searchTag = function(){
     scope.multiTodo[2] = [];
     for(var i = 0; i < scope.todoList.length; i++){
       if(scope.tagSearch && scope.todoList[i].project_tag.includes(scope.tagSearch)){
-        scope.tagList.push(scope.todoList[i]);
-        scope.multiTodo[scope.currentMulti].push(scope.todoList[i]);
+        scope.multiTodo[2].push(scope.todoList[i]);
       }
     }
     scope.tagSearch = "";
@@ -326,4 +371,15 @@ app.controller('todoController', ['$scope',function(scope){
     else scope.updateDetail("qwertyuiop");
   }
 
+  scope.addANewTag = function(){
+    var exist = false;
+    for(var i = 0; i < scope.project_detail.project_tag.length; i++){
+      if(scope.project_detail.project_tag[i] == scope.addTag)
+          exist = true;
+    }
+
+    if(!exist)
+      scope.project_detail.project_tag.push(scope.addTag);
+    scope.addTag = "";
+  }
 }]);

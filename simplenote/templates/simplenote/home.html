@@ -27,7 +27,6 @@
                       <button class="btn btn-default rounded-0" type="button" ng-click="addTask()" style="height:40px;">Add Task</button>
                       <button class="btn btn-default" type="button" style="height:40px;" ng-click="showRootLevelTask()">Show Root Task</button>
                       <button class="btn btn-default" type="button" style="height:41px;" ng-click="showAllTasks()">Show All Tasks</button>
-                      <button class="btn btn-default" type="button" style="height:41px;">Show Highest Emergence Task</button>
                       <input type="text" placeholder="Enter a Tag" ng-model="tagSearch">
                       <button class="btn btn-default" type="button" style="height:41px;" ng-click="searchTag()">Search</button>
 
@@ -74,6 +73,9 @@
                     <button type="button" class="btn btn-primary" ng-disabled="!editMode" ng-click="addTag()">
                       Add
                     </button>
+                    <span>
+                      DONE!
+                    </span>
                   </div>
                   <div class="detail" ng-hide="todoList == null">
                       <p style="height:38px;font-size:20px;"><span>Task Name: <input type="text" name="input" style="width:75%;" ng-disabled="!editMode" ng-model="project_detail.project_name" ng-trim="true"></span></p>
@@ -94,7 +96,7 @@
                           </p>
                         </div>
                       </div>
-                      <p  >Tag: <span ng-repeat="tag in project_detail.project_tag"> <button ng-bind="tag" class="btn btn-default" ng-onclick=""></button> </span></p>
+                      <p>Tag: <span ng-repeat="tag in project_detail.project_tag"> <button ng-bind="tag" class="btn btn-default" ng-click="gotoTag(tag)"></button> </span></p>
                       <p>Time Spent:<span ng-bind="project_detail.project_spent_time"></span></p>
                       <p style="height:17px;">Descriptions:</p>
                       <div>
@@ -103,23 +105,21 @@
                       <p>Creation Date:<input type="date" ng-model="project_detail.project_create_date" ng-diable="true"></p>
                       <span>Start Date: <input type="date" name="input" ng-disabled="!editMode" ng-model="project_detail.project_start_date" ng-trim="true"></span>
                       <span>Deadline: <input type="date" name="input" ng-disabled="!editMode" ng-model="project_detail.project_dead_line" ng-trim="true"></span>
-                      <div class="btn-toolbar">
+                      <div>
                         <br>
                           <div class="btn-group" role="group">
                               <button class="btn btn-default" type="button">Add Attachment</button>
                               <button class="btn btn-default" type="button">Email Me</button>
                           </div>
-                          <div class="btn-group" role="group">
-                              <button class="btn btn-default" type="button">Add Tag</button>
-                              <button class="btn btn-default" type="button">Button 2</button>
-                          </div>
+                          <input type="text" placeholder="Enter a Tag" ng-model="addTag">
+                          <button class="btn btn-default" type="button" ng-click="addANewTag()">Add Tag</button>
                       </div>
+
                       <div ng-hide="isParent()">
                         <h2>Parent Task: </h2>
                         <button type="button" class="btn btn-primary" ng-click="gotoParent()"><span ng-bind="getParent().project_name"></span></button>
                       </div>
-                      <h2>Sub Tasks: </h2>
-
+                      <h2 ng-hide="hasSubTask()">Sub Tasks: </h2>
                       <div class="subtask-level">
 <!-- TODO Check the error here. Caused by ng-repeat misuse
     TODO UPDATE: It is caused by the collapse class id -->
