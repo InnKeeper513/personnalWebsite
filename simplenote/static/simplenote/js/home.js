@@ -338,7 +338,7 @@ app.controller('todoController', ['$scope',function(scope){
     // After deleting selected task, check if
   }
 
-  scope.addTag = function(){
+  scope.addATag = function(){
     if(!scope.project_detail.project_tag.includes(scope.newTag) && scope.newTag)
       scope.project_detail.project_tag.push(scope.newTag);
     scope.newTag = "";

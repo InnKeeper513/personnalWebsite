@@ -3,6 +3,9 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'simplenote/css/home.css' %}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.print.css" rel="stylesheet" />
+
 {% endblock %}
 
 {% block body %}
@@ -32,7 +35,6 @@
 
                   </div>
                   <div class="toolbar" style="height:50px;">
-                    <button class="btn btn-default" type="button" style="height:41px;">Mark As Done</button>
                     <button class="btn btn-default" type="button" style="height:41px;" ng-click="deleteSelectedTask()">Delete Selected Tasks</button>
                   </div>
               </div>
@@ -44,6 +46,7 @@
                       <!-- Angular JS used in rendering the todolist -->
                       <div class="todo-list-item" ng-repeat="todo in multiTodo[currentMulti]" ng-class="{'highlight-todo-item': multiTodo[currentMulti][$index].project_name==selectedTodo}" >
                           <div class="row">
+
                               <div class="col-md-1">
                                   <input type="checkbox" ng-click="addCheckBox(todo)">
                               </div>
@@ -70,7 +73,7 @@
                       save
                     </button>
                     <input type="text" style="width:20%;" ng-disabled="!editMode"  placeholder="Add a tag" ng-model="newTag" ng-trim="true">
-                    <button type="button" class="btn btn-primary" ng-disabled="!editMode" ng-click="addTag()">
+                    <button type="button" class="btn btn-primary" ng-disabled="!editMode" ng-click="addATag()">
                       Add
                     </button>
                     <span>
@@ -144,7 +147,11 @@
       </div>
       <div id="schedule" class="tab-pane fade">
         <div class="schedular">
-          In Development ...
+            <div class="row">
+                  <div class="col-md-8">
+                      <div id="calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>
+                  </div>
+            </div>
         </div>
       </div>
     </div>
@@ -153,6 +160,7 @@
 {% endblock %}
 
 {% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
