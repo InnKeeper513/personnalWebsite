@@ -1,3 +1,10 @@
+.project_list_container{
+  margin-top:10px;
+  background-color: grey;
+  height: 97%;
+  width: 100%;
+}
+
 .todo{
   overflow-y: scroll;
 

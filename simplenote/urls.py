@@ -7,4 +7,5 @@ app_name='simplenote'
 urlpatterns=[
     url(r'login/',auth_views.login,{'template_name':'simplenote/login.html'},name='login'),
     url(r'register/', views.signup, name='signup'),
+    url(r'todo/api/', views.ToDoView.as_view())
 ]

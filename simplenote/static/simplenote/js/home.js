@@ -312,7 +312,6 @@ app.controller('todoController', ['$scope',function(scope){
       // If already parent, then do nothing
       if(scope.checkboxList[i].project_sub.length != 0){
         for(var j = 0; j < scope.checkboxList[i].project_sub.length; j++){
-          alert(scope.checkboxList[i].project_sub[j]);
           scope.recursiveDeletion(scope.checkboxList[i].project_sub[j]);
         }
       }

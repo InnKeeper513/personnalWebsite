@@ -7,6 +7,8 @@ from django.views.generic import View
 from django.contrib.auth.decorators import login_required
 
 from .forms import SignUpForm
+from rest_framework.response import Response
+from rest_framework.views import APIView 
 
 # Create your views here.
 
@@ -27,3 +29,7 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'simplenote/register.html',{'form':form})
+
+class ToDoView(APIView):
+    def get(self,request):
+        return Response({'test':'It Worked!'})
