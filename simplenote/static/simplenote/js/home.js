@@ -1,4 +1,8 @@
-var app = angular.module('todo',[]);
+var app = angular.module('todo',[]).config(function($httpProvider) {
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken'
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken'
+});
+
 var test1 = {
   project_name: "Test1",
   project_done: false,
@@ -67,8 +71,32 @@ function taskobj(name,done,desc,sub,id,attachment,createDate,startDate,deadLine,
   this.project_spent_time = spentTime;
 };
 
-app.controller('todoController', ['$scope',function(scope){
-  scope.todoList = [test1,test2,test3];
+app.controller('todoController', ['$scope','$http',function(scope,http){
+  //scope.todoList = [test1,test2,test3];
+  scope.todoList = [];
+  http.get('http://127.0.0.1:8000/simplenote/todo/api/').then(function(response){
+    for(var i = 0; i < response.data.length; i++){
+
+      var todo = new taskobj(response.data[i].project_name,
+                             response.data[i].project_done,
+                             response.data[i].project_desc,
+                             response.data[i].project_sub,
+                             response.data[i].project_id,
+                             response.data[i].project_attachment,
+                             response.data[i].project_create_date,
+                             response.data[i].project_start_date,
+                             response.data[i].project_dead_line,
+                             response.data[i].project_level,
+                             response.data[i].project_tag,
+                             response.data[i].project_emergence,
+                             response.data[i].project_status);
+      scope.todoList.push(todo);
+    }
+
+  });
+
+
+
   scope.multiTodo = [scope.todoList];
   scope.currentMulti = 0;
   scope.hideDetail = true;
@@ -258,7 +286,23 @@ app.controller('todoController', ['$scope',function(scope){
     //TODO will get back to the parent
     var id = scope.idGenerator();
     var number = scope.multiTodo[0].length;
-    var newTask = new taskobj("new_task"+number,null,null,[],id,null,scope.getCurrentDate(),null,null,0,null,"none","none",null);
+    var newTask = new taskobj("new_task"+number,false,"",[],id,[],scope.getCurrentDate(),null,null,0,[],"none","none",null);
+    var data =  {
+        "project_name": newTask.project_name,
+        "project_done": newTask.project_done,
+        "project_desc": newTask.project_desc,
+        "project_sub": newTask.project_sub,
+        "project_id": newTask.project_id,
+        "project_attachment": newTask.project_attachment,
+        "project_create_date": newTask.project_create_date,
+        "project_start_date": newTask.project_start_date,
+        "project_dead_line": newTask.project_dead_line,
+        "project_level": newTask.project_level,
+        "project_tag": newTask.project_tag,
+        "project_emergence": newTask.project_emergence,
+        "project_status": newTask.project_status
+    };
+    http.put('http://127.0.0.1:8000/simplenote/todo/api/',data);
     scope.multiTodo[0].push(newTask);
     scope.multiTodo[1].push(newTask);
     scope.selectedTodo = null;

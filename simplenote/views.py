@@ -8,7 +8,12 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import SignUpForm
 from rest_framework.response import Response
-from rest_framework.views import APIView 
+from rest_framework.views import APIView
+from rest_framework import status
+
+from .serializers import ToDoSerializer
+from .models import Project
+
 
 # Create your views here.
 
@@ -32,4 +37,13 @@ def signup(request):
 
 class ToDoView(APIView):
     def get(self,request):
-        return Response({'test':'It Worked!'})
+        todos = Project.objects.all()
+        serializer = ToDoSerializer(todos, many=True)
+        return Response(serializer.data)
+
+    def put(get,request):
+        serializer = ToDoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
