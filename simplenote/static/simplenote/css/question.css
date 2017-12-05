@@ -1,0 +1,18 @@
+.question_name{
+  padding-top: 20px;
+  padding-left: 20px;
+  height:38px;font-size:20px;
+}
+
+.question_name input{
+  width:50%;
+}
+
+.question_name textarea{
+  resize:none;
+  overflow-y:scroll;
+  width:95%;
+  box-sizing:
+  border-box;
+  height:500px;
+}

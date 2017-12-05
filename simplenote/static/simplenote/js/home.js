@@ -272,7 +272,23 @@ app.controller('todoController', ['$scope','$http',function(scope,http){
     //TODO to add this subtask to its parent
     var id = scope.idGenerator();
     var number = scope.multiTodo[0].length;
-    var newTask = new taskobj("new_task"+number,null,null,[],id,null,scope.getCurrentDate(),null,null,scope.project_detail.project_level+1,null,"none","none",null);
+    var newTask = new taskobj("new_task"+number,false,"",[],id,[],scope.getCurrentDate(),null,null,scope.project_detail.project_level+1,[],"none","none",null);
+    var data =  {
+        "project_name": newTask.project_name,
+        "project_done": newTask.project_done,
+        "project_desc": newTask.project_desc,
+        "project_sub": newTask.project_sub,
+        "project_id": newTask.project_id,
+        "project_attachment": newTask.project_attachment,
+        "project_create_date": newTask.project_create_date,
+        "project_start_date": newTask.project_start_date,
+        "project_dead_line": newTask.project_dead_line,
+        "project_level": newTask.project_level,
+        "project_tag": newTask.project_tag,
+        "project_emergence": newTask.project_emergence,
+        "project_status": newTask.project_status
+    };
+    http.put('http://127.0.0.1:8000/simplenote/todo/api/',data);
     scope.multiTodo[0].push(newTask);
     scope.currentMulti = 0;
     scope.project_detail.project_sub.push(id);
