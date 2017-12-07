@@ -237,14 +237,20 @@ app.controller('todoController', ['$scope','$http',function(scope,http){
   }
   scope.save = function(){
     // TODO do something to save
+
+
     scope.editMode = false;
+    // delete scope.selectedTodo
+    http.delete('http://127.0.0.1:8000/simplenote/todo/api/930afec4-71c3-6e39-853b-40e1b045cace/');
+    // Create scope.selectedTodo in the database
+
   }
 
   scope.idGenerator = function(){
     var S4 = function() {
        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
     };
-    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+    return (S4()+S4()+S4()+S4()+S4()+S4()+S4()+S4());
   }
   scope.showAllTasks = function(){
     scope.currentMulti = 0;

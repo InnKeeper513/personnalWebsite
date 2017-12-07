@@ -8,5 +8,5 @@ urlpatterns=[
     url(r'login/',auth_views.login,{'template_name':'simplenote/login.html'},name='login'),
     url(r'register/', views.signup, name='signup'),
     url(r'todo/api/$', views.ToDoView.as_view()),
-    url(r'todo/api/(?P<pk>[0-9a-zA-Z]+)/$', views.ToDoDetailView.as_view()),
+    url(r'todo/api/(?P<pk>.*)/$', views.ToDoDetailView.as_view()),
 ]
